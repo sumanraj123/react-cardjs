@@ -1,0 +1,38 @@
+
+import React from "react";
+
+// Prop Drilling
+function Pricecard(props){
+    return (
+        <div className="col-lg-4">
+        <div className="card mb-5 mb-lg-0">
+          <div className="card-body">
+            <h5 className="card-title text-muted text-uppercase text-center">{props.details.plan}</h5>
+            <h6 className="card-price text-center">{props.details.currency}{props.details.price}<span className="period">/{props.details.period}</span></h6>
+            <hr/>
+            <ul className="fa-ul">
+             {
+                 props.details.listItems.map((item,index) => {
+                    return !item.isDisabled ? 
+                    <li key={index}><span className="fa-li"><i className="fas fa-check"></i></span>{item.itemName}</li> : 
+                    <li key={index} className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>{item.itemName}</li>
+                 })
+             }
+            </ul>
+            <a href="#" className="btn btn-block btn-primary text-uppercase" onClick={() => props.handleBtnClick(props.details.plan)}>Button</a>
+          </div>
+        </div>
+      </div>
+    )
+}
+
+export default Pricecard;
+
+{/* <li><span className="fa-li"><i className="fas fa-check"></i></span>Single User</li>
+<li><span className="fa-li"><i className="fas fa-check"></i></span>5GB Storage</li>
+<li><span className="fa-li"><i className="fas fa-check"></i></span>Unlimited Public Projects</li>
+<li><span className="fa-li"><i className="fas fa-check"></i></span>Community Access</li>
+<li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Unlimited Private Projects</li>
+<li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Dedicated Phone Support</li>
+<li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Free Subdomain</li>
+<li className="text-muted"><span className="fa-li"><i className="fas fa-times"></i></span>Monthly Status Reports</li> */}
